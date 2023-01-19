@@ -1,4 +1,5 @@
 // 1 упражнение
+
 /* Реализацтя первого упражнения
 const moneyInTime = 80;
 const timeInDay = 5;
@@ -19,7 +20,9 @@ if(timeOnWork>=freeTime){
 }
 */
 
+
 //2 упражнение
+
 /*
 const deposit = 12000;
 const procent = 0.07;
@@ -34,7 +37,9 @@ if(result>priceHouse){
 }
 */
 
+
 //3 упражнение 
+
 /*
 const num = 7 
 let userNum;
@@ -59,3 +64,22 @@ if(Number(userNum) === 22){
     console.log('Вы робот!');
 }
 */
+
+
+//4 упражнение
+
+/*
+const balance = 1000;
+const isBanned = true;//акк не забанен
+const isSalling = true;//игра в продаже
+const isErist = true //игра не куплена
+const bonusAvaible = 100;
+
+const buyGame = (balance>= 1000 || bonusAvaible>=100) && isBanned && isSalling && isErist ;
+console.log(buyGame);
+*/
+
+
+//5 упражнение
+
+const salary = 1;
