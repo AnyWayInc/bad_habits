@@ -82,8 +82,62 @@ console.log(buyGame);
 
 //5 упражнение
 
+/*
 const pow = (num, power) => {
     return res = num ** power;
 }
 
 console.log(pow(2,5));
+*/
+
+
+//6 упражнение
+
+function dateOfUser(age,work,money,productPrice){
+
+    if(money>=productPrice){
+        console.log( 'Ты можешь купить', productName);
+        return true;
+    }
+
+    if(money<productPrice){
+
+        if(age>=24 && (work.toLowerCase === 'yes'|| work.toLowerCase === 'да')){
+            money = money + 500;
+            console.log('Вам дали кредит на 500$');
+
+            if(money >= productPrice){
+                console.log('Ты можешь купить', productName);
+                return true;
+            }else{
+                console.log('Вам по прежнему не хватает денег на', productName);
+                return false;
+            }
+
+        }else if (age>=24){
+            money = money + 100;
+            console.log('Вам дали кредит на 100$');
+            
+            if(money >= productPrice){
+                console.log('Ты можешь купить ', productName);
+                return true;
+            }else{
+                console.log('Вам по прежнему не хватает денег на', productName);
+                return false;
+            }
+
+        }else if (age<24&& money<productPrice){
+            console.log('Ты не можешь купить', productName);
+            return false;
+        }
+    }
+}
+
+const age = Number(prompt('Введите ваш возраст'));
+const work = String(prompt('Вы трудоустроены?'));
+let money = Number(prompt('Введите количество ваших денег'));
+const productPrice = Number(prompt('Введите стоимость продукта'));
+const productName = String(prompt('Введите имя продукта'));
+
+console.log(dateOfUser(age,work,money,productPrice));
+
