@@ -82,4 +82,8 @@ console.log(buyGame);
 
 //5 упражнение
 
-const salary = 1;
+const pow = (num, power) => {
+    return res = num ** power;
+}
+
+console.log(pow(2,5));
