@@ -93,6 +93,7 @@ console.log(pow(2,5));
 
 //6 упражнение
 
+/*
 function dateOfUser(age,work,money,productPrice){
 
     if(money>=productPrice){
@@ -140,4 +141,35 @@ const productPrice = Number(prompt('Введите стоимость проду
 const productName = String(prompt('Введите имя продукта'));
 
 console.log(dateOfUser(age,work,money,productPrice));
+*/
+
+
+//7 упражнение
+
+/*
+//Объевление массива
+const tasks = ['Задача 1','Задача 2','Задача 3'];
+console.log(tasks);
+
+//Добавление элемента в конец
+const addEnd = tasks.push('Задача 4');
+console.log(tasks);
+
+//Удаление элемента через поиск его индекса
+const arr = tasks.indexOf('Задача 2');
+const deleteEnd = tasks.splice(arr,1);
+console.log(tasks);
+
+//Добавление элемента по индекса в начало
+const arr2 = tasks.indexOf('Задача 3');
+const addStart = tasks.splice(arr2,1);
+const joinoble = addStart.join(); 
+//console.log(joinoble2 = addStart.concat(tasks)); //выполнение через слияние массива
+const addTo = tasks.unshift(joinoble);
+console.log(tasks);
+*/
+
+
+//8 упражнение
+
 
