@@ -163,7 +163,7 @@ console.log(tasks);
 //Добавление элемента по индекса в начало
 const arr2 = tasks.indexOf('Задача 3');
 const addStart = tasks.splice(arr2,1);
-const joinoble = addStart.join(); 
+const joinoble = addStart.join(); // или addStart[arr2];
 //console.log(joinoble2 = addStart.concat(tasks)); //выполнение через слияние массива
 const addTo = tasks.unshift(joinoble);
 console.log(tasks);
@@ -171,5 +171,96 @@ console.log(tasks);
 
 
 //8 упражнение
+//На вход получаем url которую нужно будет разделить на состовляющие и оформить в виде функции
+/*
+function Razdel (url){
+    const urlChanging = url.split('/');
+    const urlWithoutGarbage = urlChanging.splice(1,1);
+    const [protocol,domen,...site] = urlChanging;
+    const proto = protocol.split(':');
+    const other = site.join('/')
+    console.log('Протокол:'+ proto + '\n' , 'Домен:'+ domen + '\n' , 'Путь к сайту:'+ '/' + other );
+}
+
+Razdel('https://purpleshool.ru/course/js');
+*/
 
 
+//9 упражнение
+
+/*
+const arr = ['!','JS','люблю','Я'];
+const result = [];
+
+for(let i = arr.length-1 ; i >= 0 ; i--){
+    result.push(arr[i]);
+}
+
+console.log(result.join(' '));
+*/
+
+
+//10 упражнение
+
+/*
+const operation = [1000,-700,300,-500,10000];
+let balance = 100;
+const Dohod = [];
+const Rashod = [];
+let avgDohod = 0;  
+let avgRashod = 0;  
+
+function getBalance(balance,operation){
+    
+}
+
+function Rashet(balance,operation){
+
+    for (let index in operation){
+        balance += operation[index];
+        if(balance < 0){
+            console.log(false);
+        }
+        if(operation[index]>0){
+            Dohod.push(operation[index]);
+        }
+        if(operation[index]<0){
+            Rashod.push(operation[index]);
+        }  
+    }
+
+    for (let index in Dohod){
+        avgDohod += Dohod[index];
+    }
+    
+    for (let index in Rashod){
+        avgRashod += Rashod[index];
+    }
+    
+    console.log('Средний доход', avgDohod/Dohod.length);
+    console.log('Средний расход', avgRashod/Rashod.length);
+    console.log('Итоговый баланс', balance );
+
+}
+
+Rashet(balance,operation);
+*/
+
+
+//11 упражнение 
+
+/*
+const prices = [[100, 200],[120, 100],[200, 350]];
+
+const positivePrices = prices.map(pricesEl =>{
+    if(pricesEl[0]<pricesEl[1]){
+        return pricesEl[1]-pricesEl[0];
+    }
+}).filter(pricesEl=>{
+    return pricesEl > 0;
+});
+console.log(positivePrices);
+*/
+
+
+//12 упражнение
