@@ -526,3 +526,70 @@ console.log(some(arr,4));
 
 
 // console.log(newUser);
+
+//Методы объкетов
+
+// const user = [
+//     {
+//      name: 'Вася',
+//      surname: 'Пупкин',
+//      age: 24,
+//      getFullName: function(name,surname){
+//         return this.name + ' ' + this.surname;//Обращается к названию объекта в котором объявлен
+//      }
+//      }
+// ];
+
+// // function getFullName(user){
+// //     return user.name + ' ' + user.surname;
+// // }
+
+// user.getFullName('Вася', 'Пупкин');
+// const arr = [1,2];
+// arr.sort();
+// 'aFASASDdq'.toLowerCase();
+
+
+//19 упражнение
+
+/*
+Реализовать методы увелечения и уменьшение баланса, при котором каждая операция сохраняется в виде
+{reason: 'Оплата налогов', sum: -100} 
+Возвращается true, если успешно и false если не хватает баланса. Также реализовать вывод числа операций по кошельку
+*/
+
+// const walet = {
+//     balance: 0,
+//     operation: [],
+//     increase: function (sum,reason){
+//         this.balance+=sum;
+//         this.operation.push({
+//             reason: reason,
+//             sum: sum
+//         })
+//         return true;
+//     },
+//     decrease: function (sum,reason){
+//         if(this.balance < sum){
+//             console.log('Не хватает денег');
+//             return false;
+//         }
+//         this.balance-=sum;
+//         this.operation.push({
+//             reason: reason,
+//             sum: sum
+//         })
+//         return true;
+//     },
+//     getOperationLenght: function (){
+//         return this.operation.length;
+//     }
+// }
+
+
+// console.log(walet.increase(1000, 'sads'));
+// console.log(walet.getOperationLenght());
+// console.log(walet.decrease(5000,'sfads'));
+// console.log(walet.getOperationLenght());
+// console.log(walet.increase(500,'ssdasdaads'));
+// console.log(walet.getOperationLenght());
