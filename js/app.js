@@ -564,7 +564,7 @@ console.log(some(arr,4));
 //     increase: function (sum,reason){
 //         this.balance+=sum;
 //         this.operation.push({
-//             reason: reason,
+//             reason: reason,//если название ключа и переменной совпадают то reason можно опустить 
 //             sum: sum
 //         })
 //         return true;
@@ -593,3 +593,276 @@ console.log(some(arr,4));
 // console.log(walet.getOperationLenght());
 // console.log(walet.increase(500,'ssdasdaads'));
 // console.log(walet.getOperationLenght());
+
+
+//Итерирование по объекту 
+
+
+// const cities = {
+//     msk:{
+//         temp:25
+//     },
+//     spb:{
+//         lt:100,
+//         temp:20
+//     }
+// }
+
+// let avgTemp = 0;
+// let citiesCount = Object.keys(cities).length;//Выводи все ключи объекта и выводит сколько их всего
+// for(const key in Object.keys(cities)){
+//     avgTemp+=cities[key].temp;
+// }
+// console.log(avgTemp/citiesCount);
+
+
+//Деструктуризация и rest 
+
+// const arr = [1,3,4];
+// const [z,y,x] = arr;
+// // z = 1 , y = 3 , x = 4 
+
+// let user = {
+//     name: 'Вася',
+//     age: 40, 
+//     city: 'Москва'
+// };
+
+// const {age, ...userWithoutAge} = user; // userWithoutAge вывыодит все остальные свойства объекта
+// console.log(age);
+// console.log(name);
+
+// const additionalData = {
+//     skills: ['Разработка','Дизайн'],
+//     creditCard: '2143121321312'
+// };
+// //Сначала создаем ключ с именем skills в user, а потом кладем в объект user объект additionalData и передаем в него свойство skills
+// user.skills = additionalData.skills; 
+// // передали еще 1 свойство
+// user.creditCard = additionalData.creditCard;
+
+// //Совместили ключи 2х объектов с помощью spread оператора
+// user = {
+//     ...user,
+//     ...additionalData
+// }
+// console.log(user);
+
+
+//Опциональные chaining
+
+// const cities = {
+//     msk:{
+//         temp:{
+//             celcuis: 25
+//         }
+//     },
+//     spb:{
+
+//     }
+// }
+
+// const city = 'krd';
+// //Смотрим если у spb ключ temp, если нет то ничего нету
+// if(cities.spb && cities.spb.temp){
+// // if(cities[city]!= undefined && ciies[citi].temp!=undefined) Аналогичная запись    
+//     console.log(cities.spb.temp.celcuis);
+// }
+
+// //Аналогичная конструкция с if оператором 
+// console.log(cities[city]?.temp?.celcuis); 
+
+
+//20 упражнение
+
+/*
+    Сделать объект склад с методом добавления на склад, 
+    поиска по складу товара и расчеm его веса
+*/
+
+// const wareHouse = {
+//     goods:[],
+//     findGoodById: function (name) {
+//         return name.id || this.goods.map(el=>{if(el.name===name){
+//             return el.id
+//         }}).join('');
+//     },
+//     addGood: function (name,kg) {
+//         this.goods.push({name:name,id:this.goods.length+1,weight:{kg:kg}})
+//     },
+//     getWeightKg: function () {
+//         return this.goods.reduce((acc,value)=>acc+value.weight.kg,0);
+//     }
+// };
+
+// /* Товары */
+// const car = {
+//     id:1,
+//     weight:{
+//         kg:1000
+//     },
+//     brand:'Ford'
+// };
+
+// const chair = {
+//     id:2,
+//     weight:{
+//         kg:2
+//     }
+// };
+
+// const paper = {
+//     id: 3,
+//     color: 'red'
+// };
+
+// wareHouse.addGood('chair',100);
+// wareHouse.addGood('chasd',100);
+// wareHouse.addGood('gsdfa',100);
+// wareHouse.addGood('gsdfфвa',600);
+// console.log(wareHouse.goods);
+// console.log(wareHouse.findGoodById('chasd'));
+// console.log(wareHouse.getWeightKg());
+
+
+//21 упражнение
+
+//Пример примитивов объектов
+
+// 'use strict'
+
+// const user = {
+//     name: 'Anton',
+//     id: 2,
+//     roles:['Admin']
+// }
+
+// const newUser = user;
+// user.name = 'NewUser';
+// //Выдаст 2 объекта с одинаковыми ключами и содержимым так как обращаемся к 1 ссылке в стеке
+// console.log(user);
+// console.log(newUser);
+
+// //Выдаст 2 объекта user{name:'Anton',id 1} и newUser{name:'NewUsers',id=1} так как сначала создается новый объект а потом туда кладется user и переназначается имя
+// const newUser2 = Object.assign({},user);
+// user.name = 'NewUsers';
+// console.log(user);
+// console.log(newUser2);
+
+// //Берет все свойства из 1 объекта и копирует их в новый так что все будет гуд
+// const newUser3 = {
+//     ...user
+// };
+// newUser3.name = 'NewUsers';
+// //Пополнятся будет массив roles как в user так и newUser3 так как ссылка на массив содержится в объекте который мы скопировали
+// newUser3.roles.push('User');
+// console.log(user);
+// console.log(newUser3);
+
+
+//Пример scope chsin
+
+// 'use strict';
+
+// let successMessage = 'Nice';
+// const user = {
+//     name: 'Vasya',
+//     roles: []
+// }
+
+// function addRoles(user,role){
+//     if(role == 'admin'){
+//         const message = 'Fail';
+//         console.log(message);
+//         //Выдаст ошибку так как a в другом блоке т.е. в функции 
+//         console.log(a);
+//         return user;
+//     }
+//     user.push(role);
+//     //Можем изменить так как successMessage имеет глобальный скоуп
+//     successMessage = 'Ура';
+//     //А тут уже так как написано let то объявляется новая переменная не имеющая отношения к глобальной successMessage 
+//     let successMessage = 'Ура';
+//     console.log(successMessage);
+
+//     function logRoles(){
+//         const a = 3;
+//         console.log(user.roles);
+//     }
+//     logRoles();
+//     return user;
+// }
+
+// //Обратилось к глобальному successMessage
+// console.log(addRoles(user, 'dev')); 
+
+
+//Пример поднятия 
+
+// addUser();
+// //Ошибка так как a объявлена ниже 
+// console.log(a);
+// //undefined так как var является переменной окружения но до ее объявления будет undefined
+// console.log(b);
+// const a = 3;
+// var b = 2;
+
+// function addUser(){
+//     // console.log('User added');
+// }
+
+// //undefined
+// arr1();
+// var arr1 = () => {
+//     console.log('arr1');
+// }
+// //var не узай 
+// addUser();
+
+
+//Ключевое слово this
+
+// 'use strict';
+
+// //this = window
+// console.log(this);
+
+// function addNum(num1,num2){
+//     //undefined а без стрикт режима будет window объект
+//     console.log(this);
+//     return num1 + num2;
+// }
+
+// const addNum2 = (num1,num2) => {
+//     //window объект
+//     console.log(this);
+//     return num1 + num2;
+// }
+
+// const user = {
+//     name: 'Vasa',
+//     surname: 'Pupkin',
+//     getFullName: function(){
+//         //Выведет объект user
+//         console.log(this);
+//         return this.name + ' ' + this.surname;
+//     }
+// };
+
+// const user2 = {
+//     name: 'Marina',
+//     surname: 'Kats',
+// };
+
+// //Выведет полное имя user2
+// user2.getFullName = user.getFullName;
+// user2.getFullName();
+
+// addNum();
+
+// //undefined так как у this нету ни name ни surname
+// const getFullName = user2.getFullName;
+// getFullName();
+
+
+//
