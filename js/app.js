@@ -865,4 +865,352 @@ console.log(some(arr,4));
 // getFullName();
 
 
-//
+//Контекст в методах 
+
+// const user = {
+//     name: 'Vasa',
+//     surname: 'Pupkin',
+//     age: 20,
+//     getUserInfo: function(){
+//         //Выдаст объект user
+//         console.log(this);
+//         console(this.name + ' ' + this.surname);
+        
+//         //Если сделать стрелочной функцией то все будет ок так как стрелочная функция не является scope объектом 
+//         //и получается что this обращается к объекту user(this обращается на 1 уровень выше)
+//         function canDrink(){
+//             //this обращается вверх, а так как эта функция обернута в функцию getUserInfo 
+//             //то this возвращает undefined и undefinde.age = выдаст ошибку
+//             if(this.age >= 18){
+//                 console.log('Ok');
+//             }else{
+//                 console.log('Not ok');
+//             }
+//         }
+//         canDrink();
+//     },
+//     //Тут будет плохо так как он обращается на 1 уровень выше, то есть к глобальному уровню window
+//     getUserInfoArrow: () => {
+//         //Выдает window 
+//         console.log(this);
+//         console(this.name + ' ' + this.surname);
+//     }
+// }
+
+// //Vasa Pupkin
+// user.getUserInfo();
+// //undefined
+// user.getUserInfoArrow();
+
+
+//Arguments
+
+// 'use strict'
+// //ler, var, const, func, arguments
+// //Scope chain
+// //this
+
+// function sumNum(num1, num2){
+//     //undefined
+//     console.log(this);
+//     //Выведет объект который содержит наши аргументы которые мы передаем в функцию также тут можно получить конкретный аргумент по индексу
+//     console.log(arguments);
+//     return num1 + num2;
+// }
+
+// //Можем ввести больше или меньше аргументов ничего не сломав
+// console.log(sumNum(1,3));
+
+
+// const sumNumArr = (num1, num2) => {
+//     //window
+//     console.log(this);
+//     //Ничего не выведет
+//     console.log(arguments);
+//     return num1 + num2;
+// }
+
+// //Сломается
+// console.log(sumNumArr(1,3));
+
+
+/*
+Дополнить объект етодами для получения имени:
+    -компании
+    -сео
+    -сотрудника
+*/
+
+// const company = {
+//     name: 'ООО Агро',
+//     employees: [
+//         {
+//             name: 'Света',
+//             getName: function(){
+//                 return this.name;
+//             }
+//         }
+//     ],
+//     ceo:{
+//         name: 'Вася',
+//         getName: function (){
+//             return this.name;
+//         }
+//     },
+//     getNameOfCompany: function (){
+//         return this.name;
+//     },
+//     getNameCeo: function (){
+//         return this.ceo.name;
+//     },
+//     getNameEmployees:function(){
+//         return this.employees.map(el => {return el.name}).join();
+//     }
+// }
+// //Сделано 2мя способами 
+// console.log(company.getNameCeo());
+// console.log(company.getNameEmployees());
+// console.log(company.getNameOfCompany());
+// console.log(company.ceo.getName());
+// console.log(company.employees.map(el=> el.getName()));
+
+
+//22 упражнение
+
+//EOL для методов
+
+// 'use strict';
+
+// const b = 1;
+// const a = {
+//     b,
+//     getB: function(){
+//         return this.b;
+//     },
+//     //Короткая запись  getB
+//     getBAlternative() {
+//         return this.b;
+//     }
+// }
+
+// //Выведет b
+// console.log(a);
+
+
+//Call, apply
+
+// 'use strict';
+
+// const audi = {
+//     make: 'Audi',
+//     model: 'A3',
+//     year:2021,
+//     damages: [],
+//     addDamage(part, rate){
+//         console.log('У авто ' + this.make + ' ' + this.year + ' добавленно: повреждение ' + part + ' со степенью ' + rate);
+//         this.damages.push({
+//             part,
+//             rate
+//         })
+//     }
+// }
+
+// audi.addDamage('Капот', 1);
+
+// const bmw = {
+//     make: 'BMW',
+//     model: 'X5',
+//     year:2022,
+//     damages: [],
+// }
+
+// //Переносим метод из ауди в бмв
+// bmw.addDamage = audi.addDamage;
+// bmw.addDamage('Бампер', 2);
+
+// //Вытаскиваем метод для применения на других объектах
+// const addDamageFunc = audi.addDamage;
+// // addDamageFunc('Бампер', 2);
+// //call вызывает функцию на каком контексте и с какими аргументами
+// //Тоесть мы говорим что хотим вызвать функцию но в контексте bmw и передать в эту функцию 2 аргумента 'Бампер', 2
+// addDamageFunc.call(bmw, 'Бампер', 2);
+// addDamageFunc.call(audi, 'Бампер', 2);
+// //Можем сделать такеже как и в apply благодаря spread оператору 
+// addDamageFunc.call(audi, ...['Бампер', 2]);
+
+// //Тоже самое только передаем массив аргументов
+// addDamageFunc.apply(bmw,['Бампер', 2]);
+// addDamageFunc.apply(audi,['Бампер', 2]);
+
+
+//Bind
+
+// 'use strict';
+
+// //Bind связывает this с функцией которую мы хотим вызвать
+
+// const audi = {
+//     make: 'Audi',
+//     model: 'A3',
+//     damages: [],
+// };
+
+// const carManipulation = {
+//     addDamage(part, rate) {
+//         this.damages.push({part,rate});
+//         console.log(`Добавили повреждения ${this.make} ${this.model}`);
+//     }
+// }
+
+// //Теперь метод addDamage связан с объектом audi
+// //Присваиваем функции свойство которое мы связываем с объектом audi
+// const addDamageAudi = carManipulation.addDamage.bind(audi);
+// //Передаем в audi addDamage с этими свойствами и для наглядности что все получилось выводим объект audi
+// addDamageAudi('Крыло',3);
+// console.log(audi);
+
+// //Тоесть тоже самое только мы уже фиксируем первый аргумент который мы передаем в audi
+// //Также можем фиксировать и 2 аргумент
+// const addDamageAudiRoof = carManipulation.addDamage.bind(audi,'Крыша');
+// addDamageAudiRoof(5);
+// console.log(audi);
+
+
+/*
+    Создайте объект пользователя с паролем.
+    С помощью фукнции ниже удалить пароль сделав функцию сброса пароля.
+*/
+
+// 'use strict';
+
+// function removePassword(reset) {
+//     if (reset){
+//         this.password = undefined;
+//     }else {
+//         this.password = '1';
+//     }
+// }
+
+// const user = {
+//     login:'login',
+//     password:'QWE123'
+// }
+
+// const removeUser = removePassword.bind(user);
+// console.log(user);
+// removeUser(true);
+// console.log(user);
+
+
+//23 упражнение
+
+//IIFE (Сейчас более часть используют async)
+
+// 'use strict'
+
+// //Допусти что функция init то есть начала работы приложения должна запускаться 1 раз всего 
+// function init() {
+//     console.log('Start');
+// }
+// init();
+// init();
+
+// //Делая безымяную функцию мы не можем вызывать ее несколько раз, но js будет ругаться что функция без имены
+// //Для того чтобы все заработало мы оборачиваем функцию в скобки и после них пишем скобки для вызова этой функции всего 1 раз 
+// //Кроме того что функция вызывается всего 1 раз у нее есть свой scope 
+// (function() {
+//     console.log('Start IIFO');
+//     //Мы не сможем вытащить переменные из этой функции извне
+//     const a = 1;
+// })();
+
+
+//Замыкание
+
+// 'use strict';
+
+// function changeBalance (){
+//     let balance = 0;
+//     let key = 'asd';
+//     return function(sum){
+//         balance +=sum;
+//         key = 'adsf'
+//         console.log(`Баланс: ${balance}`);
+//     }
+// }
+
+// //change равен внутренней функции которую мы описали выше 
+// const change = changeBalance();
+// //100
+// change(100);
+// //50
+// change(-50);
+// //250
+// change(200);
+
+// //Замыкание - это комбинация функции и его лексического окружения,
+// //в котором эта функция была определена.
+// //Простыми словами: функция помнит в каком контексте она была создана и может его использовать 
+
+// //Выведет anonymous(sum), а также scope 
+// //в котором выидет все переменные которые использует анонимная функция, 
+// //но не видет объявленные другие переменные которые не использует анонимная функция
+// console.dir(change);
+
+// const change2 = changeBalance();
+// //Баланс 100 отдельный от того который мы создали ранее
+// change2(100);
+// //Выведет anonymous(sum), а также scope 
+// //в котором выидет все переменные которые использует анонимная функция, 
+// //но не видет объявленные другие переменные которые не использует анонимная функция
+// cconsole.dir(change2);
+
+
+/*
+    Сделать функцию пользователя, которая берет за основу userInfo
+    и за счет замыкания создает новый объект, с которым можно работать 
+    как с user1().increse(100)
+*/
+
+// const userInfo = {
+//     balance: 0,
+//     operations: 0,
+//     increse(sum){
+//         this.balance +=sum;
+//         this.operations++; 
+//     },
+// }
+
+// function user(){
+//     // //Копируем объект
+//     // const userObj = userInfo;
+//     //Вот так все заработает
+//     const userObj = {
+//         balance: 0,
+//         operations: 0,
+//         increse(sum){
+//             this.balance +=sum;
+//             this.operations++; 
+//         },
+//     }
+//     //Замыкание
+//     return function(){
+//         return userObj;
+//     }
+// }
+
+// const user1 = user();
+// user1().increse(100);
+// user1().increse(100);
+// //balance = 200;
+// console.log(user1());
+
+// const user2 = user();
+// user2().increse(100);
+// //balance = 300;
+// //Чтобы избежать взаимодействия с объектом userInfo нужно самому прописать новый объект
+// console.log(user2());
+
+
+//24 упражнение 
+
