@@ -1214,3 +1214,153 @@ console.log(some(arr,4));
 
 //24 упражнение 
 
+
+// DOM 
+
+// 'use strict';
+
+
+// addEventListener('load', () =>{
+//     console.log(document);
+//     console.log(document.head);
+// })
+
+// //Получаем данные из класса .panel из html
+// console.log(document.querySelector('.panel').innerHTML);
+// //Заменили в html текст panel на New text 
+// document.querySelector('.panel').innerText = 'New text';
+// //Получаем текст из .panel в переменную и потом можем с ним взаимодействовать 
+// const pannelText = document.querySelector('.panel').innerText;
+// //Для .input ставим изначальный текст в поле на Text
+// document.querySelector('.input').value = 'Text';
+
+
+//Обработка событий 
+
+// 'use strict';
+
+
+// //Добовляем ивент для кнопки при нажатии на которую в консоль выводит текст 
+// document.querySelector('.button').addEventListener('click',()=>{
+//     // console.log('asdas');
+//     // //Отображает все что произошло при клике тоесть детали события
+//     // console.log(e);
+//     //Получаем значение которое ввели в поле input при нажатии на кнопку
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     //При проверки изменяем текст .panel на тот который ввели в input
+//     document.querySelector('.panel').innerText = input;
+//     //После изменения .panel очищается input
+//     document.querySelector('.input').value = '';
+// });
+
+//Можем написать функцию и в html вызвать ее путем добавления свойства onclick и указываем какую функцию хотим вызвать
+// function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+// }
+
+
+//Обработка событий клавиатуры
+
+// function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+// }
+
+// //Тот же результат что и снизу только в html привязали При нажатии на кнопку Enter
+// function inputChange(e){
+//     if(e.code == 'Enter'){
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// }
+// document.querySelector('.input').addEventListener('keydown', ()=>{
+//     //При нажатии на любую клавишу будет выводится в консоль 'down'
+//     console.log('down');
+//     //При нажатии на Enter выводит в консоль Enter
+//     if(e.code == 'Enter'){
+//         console.log('Enter');
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// })
+
+
+//Работа со стилями
+
+// 'use strict';
+
+// function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+//     //При вводе input меняется стиль notification display = none на display = block
+//     // document.querySelector('.notification').style.display = 'block';
+//     //Он добавляет предварительно созданный стиль для notification в style 
+//     //Можно также написать .remove тоесть удалить класс стиля 
+//     document.querySelector('.notification').classList.add('notification_active');
+// }
+
+// //Тот же результат что и снизу только в html привязали При нажатии на кнопку Enter
+// function inputChange(e){
+//     if(e.code == 'Enter'){
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// }
+
+
+//Установка атрибутов 
+
+// 'use strict';
+
+// function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return;
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+//     // document.querySelector('.notification').classList.add('notification_active');
+//     //Получаем атрибут нужного нам элемента 
+//     document.querySelector('.notification').getAttribute('class');
+//     //Удаляет в атрибуте class все и ставит notification
+//     document.querySelector('.notification').setAttribute('class', 'notification');
+//     //Создаем новый атрибут key и передаем туда 1 
+//     document.querySelector('.notification').setAttribute('key', 1);
+//     //Создаем новый атрибут user-id и передаем туда 1 
+//     document.querySelector('.notification').setAttribute('user-id', 1);
+//     //И потом получаем его чтобы преобразовать его в число нужно перед этой конструкцией написать Number()
+//     document.querySelector('.notification').getAttribute('user-id');
+    
+
+// }
+
+// //Тот же результат что и снизу только в html привязали При нажатии на кнопку Enter
+// function inputChange(e){
+//     if(e.code == 'Enter'){
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// }
+
+
+//Упражнение - получение DOM элементов 
+
+/*
+
+*/
