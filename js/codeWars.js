@@ -77,3 +77,57 @@
 //return `${s.replace(/[abcdefghijklm]/g, '').length}/${s.length}`
 
 //console.log(printerError(s));
+
+// На этот раз ни истории, ни теории. В приведенных ниже примерах показано, как написать функцию accum:
+
+// Примеры:
+// accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+
+// function accum(s) {
+//     const result = []
+//     const lowerStr = s.toLowerCase()
+  
+//     for(let i = 0; i < lowerStr.length; i++) {
+//       let str = lowerStr[i].toUpperCase()
+//       for(let j = 0; j < i; j++) {
+//         str += lowerStr[i]
+//       }
+//       result.push(str)
+//     }
+  
+//     return result.join("-")
+// }
+
+// console.log(accum("abcd"));
+
+
+
+//Если мы перечислим все натуральные числа ниже 10, которые кратны 3 или 5, мы получим 3, 5, 6 и 9. 
+//Сумма этих кратных равна 23. Завершите решение так, чтобы оно вернуло сумму всех кратных 3 или 5 ниже переданного числа.
+//Кроме того, если число отрицательное, вернуть 0 (для языков, в которых они есть). 
+//Примечание. Если число кратно и 3, и 5, считайте его только один раз.
+
+
+// function solution(number){
+   
+//     if (number < 0) {
+//         return 0;
+//     }
+
+//     let sum = 0;
+    
+//     for (let i = 0; i < number; i++) {
+//         if (i % 3 === 0 || i % 5 === 0) {
+//             sum += i;
+//         }
+//     }
+    
+//     return sum;
+// }
+
+
+// console.log(solution(10));
+
+

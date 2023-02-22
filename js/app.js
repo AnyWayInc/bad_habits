@@ -1362,5 +1362,25 @@ console.log(some(arr,4));
 //Упражнение - получение DOM элементов 
 
 /*
-
+    Получить текст из элементов
 */
+
+// console.log(document.querySelector('.one').innerText);
+// console.log(document.querySelector('.one ~ div').innerText);
+
+// //Альтернативный способ получения текста
+// console.log(document.querySelectorAll('.one')[0].innerText);
+// console.log(document.querySelectorAll('.one')[1].innerText);
+
+// console.log(document.querySelector('#two').innerText);
+// console.log(document.querySelector('[user-id="4"]').innerText);
+
+// //Альтернативный способ получения текста
+// console.log(document.getElementById('two').innerText);
+
+
+//25 упражнение 
+
+
+//Добавление html на лету 
+
