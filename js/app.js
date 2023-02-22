@@ -1384,3 +1384,137 @@ console.log(some(arr,4));
 
 //Добавление html на лету 
 
+// 'use strict';
+
+//  function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+//     document.querySelector('.notification').classList.remove('notification');
+// }
+    
+// //Тот же результат что и снизу только в html привязали При нажатии на кнопку Enter
+// function inputChange(e){
+//     if(e.code == 'Enter'){
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// }
+
+// const panelText = 'Panel';
+// const panelClass = 'button';
+// //Создает внутри тега test тэг button для работы с ним
+// const newElement = document.createElement('button');
+// //Добавляет этому атрибуту user-id = 1 
+// newElement.setAttribute('user-id', 1);
+// //Добавляет класс button для button
+// // newElement.classList.add('button');
+// newElement.classList.add('panel');
+// //Добавляет стоковый текст внутрь кнопки 
+// // newElement.innerText = 'Кнопка';
+// //Добавляем HTML тег для newElement 
+// newElement.innerHTML = `<div class = "${panelClass}">${panelText}</div>`;
+
+// //Добавление в test вконец всего того что мы написали 
+// document.querySelector('.test').appendChild(newElement);
+
+
+//Local storage 
+
+
+// 'use strict';
+
+//  function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+//     document.querySelector('.notification').classList.remove('notification');
+// }
+    
+// //Тот же результат что и снизу только в html привязали При нажатии на кнопку Enter
+// function inputChange(e){
+//     if(e.code == 'Enter'){
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// }
+
+// //Создать токен в хранилище
+// localStorage.setItem('TOKEN', 'asdsad');
+// //Получить токен по имени
+// const toke1 = localStorage.getItem('TOKEN');
+// //Удаление токена по имени
+// localStorage.removeItem('TOKEN');
+// //Удаление всех токенов в application
+// localStorage.clear();
+
+
+//JSON
+
+// 'use strict';
+
+//  function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+//     document.querySelector('.notification').classList.remove('notification');
+// }
+    
+// //Тот же результат что и снизу только в html привязали При нажатии на кнопку Enter
+// function inputChange(e){
+//     if(e.code == 'Enter'){
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// }
+
+// //Java Script Object Natation
+// //Парсит объект (тоесть прочитать какой то JSON)
+// const jsObj = JSON.parse('{ "a" : 1 }');
+// console.log(jsObj);
+
+// //Stringify превращает объект в строку 
+// const str = JSON.stringify(jsObj);
+// console.log(str);
+
+//Упражнение
+
+/* key:'text', value: { text: 'ads'} */
+
+// 'use strict';
+
+//  function changeClick(){
+//     const input = document.querySelector('.input').value;
+//     if(!input){
+//         return
+//     }
+//     document.querySelector('.panel').innerText = input;
+//     document.querySelector('.input').value = '';
+//     document.querySelector('.notification').classList.remove('notification');
+//     //Преобразование строчки которую мы ввели в объект и текстом
+//     const text = JSON.stringify({
+//         text: input
+//     });
+//     //Добавление этогой объекта в локальное хранилище
+//     localStorage.setItem('text',text);
+// }
+
+// //Тот же результат что и снизу только в html привязали При нажатии на кнопку Enter
+// function inputChange(e){
+//     if(e.code == 'Enter'){
+//         //И вызывает функцию
+//         changeClick();
+//     }
+// }
+
+
+//26 упражнение
